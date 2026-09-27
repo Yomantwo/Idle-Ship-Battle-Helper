@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.1.0 — 2026-09-27
+
+- Ajoute l'en-tête `X-Client: idle-ship-battle-helper` sur les requêtes d'achat, pour
+  distinguer dans les journaux du serveur une action du helper d'un clic manuel.
+
 ## v1.0.0 — 2026-09-27
 
 Première version publique.

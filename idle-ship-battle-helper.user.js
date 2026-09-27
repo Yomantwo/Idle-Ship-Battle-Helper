@@ -1,7 +1,7 @@
 ﻿// ==UserScript==
 // @name         Idle Ship Battle - Helper
 // @namespace    local.idleship.autobuy
-// @version      1.0.0
+// @version      1.1.0
 // @description  Achète armes et nœuds de prestige au meilleur rendement, à partir des formules exactes du jeu (décompilées). Aucune requête de lecture : écoute les réponses que le jeu reçoit déjà.
 // @match        https://idleshipbattle.myrialis.com/*
 // @run-at       document-start
@@ -409,7 +409,8 @@
   }
 
   async function post(path, body) {
-    const headers = { 'Content-Type': 'application/json' };
+    // Identifie le script dans les journaux du serveur, pour distinguer un achat du helper d'un clic manuel.
+    const headers = { 'Content-Type': 'application/json', 'X-Client': 'idle-ship-battle-helper' };
     if (st.version) headers['X-ISB-Version'] = st.version;
     st.busy = true; st.lastPost = performance.now();
     try {
