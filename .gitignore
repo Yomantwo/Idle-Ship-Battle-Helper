@@ -1,0 +1,22 @@
+node_modules/
+*.log
+
+# Etat de compte / captures reseau (jamais partages, lies a un compte precis)
+snapshot*.json
+sync*.json
+api_log.json
+*.har
+
+# Artefacts de decompilation du jeu (proprietes du developpeur, jamais publies)
+*.wasm
+*.wat
+*.dcmp
+global-metadata.dat
+cpp2il_out/
+tools/
+data/
+
+# Scripts d'analyse ad hoc (non destines a etre publies)
+test_*.js
+watexec.py
+wat2pseudo.py
