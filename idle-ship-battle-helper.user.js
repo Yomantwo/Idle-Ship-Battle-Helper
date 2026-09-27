@@ -1,7 +1,7 @@
 ﻿// ==UserScript==
 // @name         Idle Ship Battle - Helper
 // @namespace    local.idleship.autobuy
-// @version      1.1.0
+// @version      1.2.0
 // @description  Achète armes et nœuds de prestige au meilleur rendement, à partir des formules exactes du jeu (décompilées). Aucune requête de lecture : écoute les réponses que le jeu reçoit déjà.
 // @match        https://idleshipbattle.myrialis.com/*
 // @run-at       document-start
@@ -137,11 +137,15 @@
     const c = st[0];
     per[0] = c.dmg * Math.min(c.tgt, N) * Math.min(8, c.rate * f / 1000) * TPS;
     if (unl[1]) {
+      // World.FireLaser : la chauffe multiplie les dégâts, mais seulement sur la cible verrouillée.
       const l = st[1];
-      let h = Math.min(env.heat, 40) * l.heatLv * 10;
-      if (l.heatMille >= 1001) h = h * l.heatMille / 1000;
-      h = Math.min(h, 1e6);
-      per[1] = Math.max(1, l.dmg * f) * (Math.min(l.tgt, N) + h / 1000) * TPS;
+      let heatBonus = Math.min(env.heat, 40) * l.heatLv * 10;
+      if (l.heatMille >= 1001) heatBonus = heatBonus * l.heatMille / 1000;
+      heatBonus = Math.min(heatBonus, 1e6);
+      const dmgBase = Math.max(1, l.dmg * f);
+      const dmgLocked = Math.max(1, dmgBase * (1000 + heatBonus) / 1000);
+      const n = Math.min(l.tgt, N);
+      per[1] = (dmgLocked + Math.max(0, n - 1) * dmgBase) * TPS;
     }
     if (unl[2]) {
       const m = st[2];

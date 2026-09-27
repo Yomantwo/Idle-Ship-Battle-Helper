@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.2.0 — 2026-09-27
+
+- Corrige une sous-évaluation du DPS laser : la chauffe multiplie les dégâts de la
+  cible verrouillée (jusqu'à ×1000), elle n'ajoutait qu'un petit bonus additif au
+  nombre de cibles. Le script visait beaucoup trop peu de niveaux de Chauffe.
+
 ## v1.1.0 — 2026-09-27
 
 - Ajoute l'en-tête `X-Client: idle-ship-battle-helper` sur les requêtes d'achat, pour
