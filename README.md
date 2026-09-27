@@ -70,8 +70,7 @@ Le nœud qui rapporte le plus par point de prestige dépensé est acheté en pre
 
 Le jeu ne renvoie jamais le coût ni l'effet des nœuds de l'arbre par son API : c'est une
 table fixe côté client. Les constantes utilisées ici (coûts, croissances, formules de
-dégâts et de prestige) ont été retrouvées par rétro-ingénierie du client du jeu, avec
-l'accord du développeur, et vérifiées contre l'état réellement renvoyé par le serveur.
+dégâts et de prestige) ont été retrouvées par rétro-ingénierie du client du jeu et vérifiées contre l'état réellement renvoyé par le serveur.
 Si le jeu change son équilibrage, ces constantes devront être mises à jour.
 
 ## Licence
